@@ -41,7 +41,7 @@ penguins
 
 Create a scatter plot which shows the relationship between penguin body mass and flipper length.
 
-The following code chunk will not work until you replace all the ?s. Note the red circles to the left of the line numbers. This is Posit telling you the code has some problems. These are problems you need to correct.
+The following code chunk will not work until you replace all the ?s. Note the red circles to the left of the line numbers. This is RStudio Desktop telling you the code has some problems. These are problems you need to correct.
 
 ```{r}
 #| fig-align: 'center'
