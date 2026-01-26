@@ -3,7 +3,6 @@
 Documents the data sets found in this folder.
 
 
-
 # Penguins
 
 **Description:** Size measurements for adult foraging penguins near Palmer

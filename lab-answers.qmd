@@ -1,9 +1,10 @@
 ---
 title: "Introduction to `ggplot`"
 date: "Week 02"
-output: html_notebook
+format:
+  html:
+    embed-resources: true
 ---
-
 
 
 # Introduction
@@ -19,7 +20,6 @@ knitr::include_graphics(url)
 ```
 
 
-
 # Lab
 
 ## Task 01 Setup
@@ -32,21 +32,20 @@ knitr::include_graphics(url)
 #| message: false
 #| warning: false
 
-library(rio)
 library(tidyverse)
-penguins <- import("data/penguins.csv")
+penguins <- read_csv("data/penguins.csv")
 penguins
 ``` 
 
 ## Task 02
 
- Create a scatter plot which shows the relationship between penguin body mass and flipper length.
+Create a scatter plot which shows the relationship between penguin body mass and flipper length.
 
-The following code chunk will not work until you replace all the ?s. Note the red circles to the left of the line numbers. This is RStudio telling you the code has some problems. These are problems you need to correct.
+The following code chunk will not work until you replace all the ?s. Note the red circles to the left of the line numbers. This is Posit telling you the code has some problems. These are problems you need to correct.
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
   geom_point()
@@ -54,7 +53,7 @@ ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ## Run this to see the answer to Task 02.
 file <- "includes/lab-task-02.png"
@@ -82,7 +81,7 @@ Based on this box plot, which type of penguin is, on average, heaviest?
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ## Run this to see the answer to Task 03.
 file <- "includes/lab-task-03.png"
@@ -103,10 +102,10 @@ Note: Although the ratio of female to male penguins is ALMOST exactly 1, the hum
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ggplot(
-  data = penguins %>% filter(!is.na(sex)) %>% count(sex),
+  data = penguins |> filter(!is.na(sex)) |> count(sex),
   aes(x = "", y = n, fill = sex)
 ) +
   geom_col() +
@@ -119,7 +118,7 @@ Data science is about telling stories with your data, just be conscious of the s
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ## Run this to see the answer to Task 04.
 file <- "includes/lab-task-04.png"
@@ -156,7 +155,7 @@ Additional Resources:
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ## Run this to see the answer to Task 05.
 file <- "includes/lab-task-05-default.png"
@@ -180,7 +179,7 @@ ggplot(data = penguins, mapping = aes(x = flipper_length_mm)) +
 
 ```{r}
 #| fig-align: 'center'
-#| fig-width: '75%'
+#| out-width: '75%'
 
 ## Run this to see the answer to Task 06.
 file <- "includes/lab-task-06.png"
