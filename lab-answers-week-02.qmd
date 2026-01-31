@@ -1,0 +1,194 @@
+---
+title: "Introduction to `ggplot`"
+date: "Week 02"
+format:
+  html:
+    embed-resources: true
+---
+
+
+# Introduction
+
+Tonight's lab will further explore the Palmer Penguins data.
+
+```{r}
+#| echo=false
+#| fig-align: 'center'
+
+url <- "https://imgs.xkcd.com/comics/scientific_paper_graph_quality.png"
+knitr::include_graphics(url)
+```
+
+
+# Lab
+
+## Task 01 Setup
+
+- Look at the output from this code chunk. How many rows of data are in the 
+  penguins data set?
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+penguins <- read_csv("data/penguins.csv")
+penguins
+``` 
+
+## Task 02
+
+Create a scatter plot which shows the relationship between penguin body mass and flipper length.
+
+The following code chunk will not work until you replace all the ?s. Note the red circles to the left of the line numbers. This is RStudio Desktop telling you the code has some problems. These are problems you need to correct.
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point()
+```
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+## Run this to see the answer to Task 02.
+file <- "includes/lab-task-02.png"
+knitr::include_graphics(file)
+```
+
+How would you describe this relationship?
+
+- Positive
+- Negative
+- No clear relationship
+
+## Task 03
+
+Create a box plot which shows how body mass varies across penguins of different
+species.
+
+```{r}
+## YOUR CODE HERE
+ggplot(data = penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+
+Based on this box plot, which type of penguin is, on average, heaviest?
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+## Run this to see the answer to Task 03.
+file <- "includes/lab-task-03.png"
+knitr::include_graphics(file)
+```
+
+## Task 04
+
+Create a bar plot to determine the most common penguin sex in this data set.
+
+```{r}
+## YOUR CODE HERE
+ggplot(data = penguins, mapping = aes(x = sex)) +
+  geom_bar()
+```
+
+Note: Although the ratio of female to male penguins is ALMOST exactly 1, the human eye is able to tell which bar is higher. In contrast, the human eye struggles with the following:
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+ggplot(
+  data = penguins |> filter(!is.na(sex)) |> count(sex),
+  aes(x = "", y = n, fill = sex)
+) +
+  geom_col() +
+  coord_polar("y")
+```
+
+I dropped the eleven penguins with an unknown sex from this pie chart and it is really hard to tell which is larger. And yet, it was not hard to figure this out on when using a bar plot. This is a ramification of how the human eye/brain work and is a simplistic illustration of why you should ONLY use a pie chart if your goal is to show that one group is a teensy-tiny fraction of the total or that the difference between two groups is negligible.
+
+Data science is about telling stories with your data, just be conscious of the story you are trying to tell. And if you ever use a 3D pie chart I will hunt you down and fail you posthumously.
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+## Run this to see the answer to Task 04.
+file <- "includes/lab-task-04.png"
+knitr::include_graphics(file)
+```
+
+## Task 05
+
+Create a histogram of penguin flipper length. Which phrase below best describes the distribution of penguin flipper length?
+
+- Normally distributed
+- Bimodal
+- Trimodal
+- Long Tailed   
+
+The default number of bins, 30, is adequate but the answer is clearer if you use `bins = 15`. To learn more, try looking running `?geom_histogram` in the console or using the built-in help mechanism.
+
+```{r}
+## YOUR CODE HERE
+
+# This is the default.
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm)) +
+  geom_histogram()
+
+# And this has a tweaked number of buns.
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm)) +
+  geom_histogram(bins = 30)
+```
+
+Additional Resources:
+- [Normal Distribution - Wikipedia](https://en.wikipedia.org/wiki/Normal_distribution)
+- [Long Tail - Wikipedia](https://en.wikipedia.org/wiki/Long_tail)
+- [Bimodality - Wikipedia](https://en.wikipedia.org/wiki/Multimodal_distribution)
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+## Run this to see the answer to Task 05.
+file <- "includes/lab-task-05-default.png"
+knitr::include_graphics(file)
+file <- "includes/lab-task-05-best.png"
+knitr::include_graphics(file)
+```
+
+In introductory statistics there is a great deal of focus on "normal" distributions, which are more formally called Gaussian distributions. Biological factors such as weight or height are well modeled by the normal distribution. But many other natural processes are not well modeled by this favorite of introductory statistics. Take a moment at some point to read through the PDF found in this week's materials: [We need to Let Go of the Bell Curve](/.We-Need-to-Let-Go-of-the-Bell-Curve.pdf).
+
+## Task 06
+
+Create a second histogram of penguin flipper length, and stratify this by species. Which penguin species has the longest average flipper length?
+
+```{r}
+## YOUR CODE HERE
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm)) +
+  geom_histogram() +
+  facet_wrap(~species)
+```
+
+```{r}
+#| fig-align: 'center'
+#| out-width: '75%'
+
+## Run this to see the answer to Task 06.
+file <- "includes/lab-task-06.png"
+knitr::include_graphics(file)
+```
+
+# Next Steps
+
+Once done here, please complete the questions in Canvas, if you have not already done so. 
+
+Have a great weekend!
+   

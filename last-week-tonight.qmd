@@ -1,0 +1,114 @@
+---
+title: "Introduction to `ggplot`"
+author: "Andy Choens"
+date: "Week 02"
+format:
+  revealjs:
+    self-contained: true
+---
+
+
+## Learning Objectives
+
+- Lecture 01
+  - Using These Notes
+  - Data Life Cycle
+  - Last Week Tonight
+  - Learning Isn't Easy
+  - Additional Resources
+- Lecture 02
+  - Intro do Data Visualization using R.
+  - Lab
+
+
+## Using These Notes (1/2)
+
+You can read this lecture documentation one of TWO ways:
+
+<small>
+
+1. Run one code-chunk at a time.
+2. Run all code chunks (<img src="./includes/run-chunks-2.png" height="20">) and then hit the "Preview" button (<img src="./includes/preview.png" height="15">) in the menu to render the discussion into a HTML document. (This is the pretty option.) To run all code chunks:
+
+</small>
+
+```{r echo=FALSE, fig.align='center', out.width = '40%'}
+url <- "./includes/run-chunks.png"
+knitr::include_graphics(url)
+```
+
+
+## Data Life Cycle
+
+```{r echo=FALSE, fig.align='center', out.width = '75%'}
+url <- "https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png"
+knitr::include_graphics(url)
+```
+
+During today's lecture:
+
+- Import: We will import penguins data from CSV.
+- Munge: We don't need to clean tonight's data up.
+- Visualize/Model: This is our focus tonight. Data Viz!
+- Communicate: This is the lab notebooks we are creating.
+
+
+## Last Week Tonight
+
+```{r echo=FALSE, fig.align='center', out.width = '60%'}
+url <- "https://imgs.xkcd.com/comics/drinking_fountains.png"
+knitr::include_graphics(url)
+```
+
+
+## Code Chunks
+
+- RMarkdown files contain plain text & code.
+- Code is found in code chunks, fenced using back ticks.
+- The FIRST code chunk is called the setup chunk.
+
+
+## Setup Chunk
+
+This incredibly important code chunk:
+
+- Loads libraries
+- Imports data
+- Sets any variables you need for your project
+- Whatever else you want to do at the very beginning
+
+
+## Learning isn't easy
+
+> The bad news is that when ever you learn a new skill your going to suck. It’s going to be frustrating. The good news is that is typical and happens to everyone and it is only temporary. You can't go from knowing nothing to becoming an expert without going through a period of great frustration and great suckiness.
+>
+> --Hadley Wickham
+
+
+## HELP!
+
+In addition to these lecture notes, labs, readings, videos, etc. there are other ways to find help.
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/r)
+- `?mean` If you prepend a `?` to a command, R provide you with built-in 
+  function documentation.
+
+
+## Additional Resources:
+
+- [R programming in one hour - a crash course for beginners](https://youtu.be/eR-XRSKsuR4)
+- [Data To Viz](https://www.data-to-viz.com/)
+- [GGPlot Documentation](https://ggplot2.tidyverse.org/index.html)
+- [Tidyverse Learn](https://www.tidyverse.org/learn/)
+- [r-charts.com/color](https://r-charts.com/colors/)
+- [Color Brewer](https://colorbrewer2.org/#type=sequential&scheme=Oranges&n=5)
+
+
+## You Need This Joke
+
+<br />
+
+```{r echo=FALSE, fig.align='center', out.width = '40%'}
+url <- "https://imgs.xkcd.com/comics/data.png"
+knitr::include_graphics(url)
+```
