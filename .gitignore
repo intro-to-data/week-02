@@ -5,5 +5,7 @@
 .RData
 .Ruserdata
 .vscode
+.doit.db
+__pycache__/*
 lecture-01_files/*
 lecture-02_files/*
